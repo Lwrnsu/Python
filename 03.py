@@ -65,7 +65,7 @@ while user_input != 3:
                         print("Invalid input, please try again.")
                 
                 user_status = None
-                while user_status != "Y" or user_status != "N":
+                while user_status not in ("Y", "N"):
                     user_status = input("is active? [Y if yes, N if not]: ").upper()
                     match user_status:
                         case "Y":
@@ -85,7 +85,7 @@ while user_input != 3:
                 print(f"Age: {user_age}")
                 print(f"is Active: {user_status}")
                 confirm_details = None
-                while confirm_details != 'Y' or confirm_details != 'N':
+                while confirm_details not in ("Y", "N"):
                     confirm_details = input("Confirm? [Y if yes, N if not]: ").upper()
                     match confirm_details:
                         case 'Y':
