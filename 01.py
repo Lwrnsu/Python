@@ -9,5 +9,5 @@ if user_age > 18 and user_age < 60:
     print(f"Hello {user_name}, you are adult!")
 elif user_age >= 60:
     print(f"Hello {user_name}, you are senior!")
-else: 
+else:
     print(f"Hello {user_name}, you are minor!")
