@@ -1,4 +1,4 @@
-# January 13, 2025
+# January 13, 2026
 
 # Number Statistics Analyzer
 
@@ -9,7 +9,7 @@
 def calculate_average(numbers):
     if not numbers:
         return
-    else: 
+    else:
         total = 0
         for x in numbers:
             total += x
