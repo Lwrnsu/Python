@@ -25,20 +25,17 @@ def get_user_choice():
         
 def add_expense(data):
     data_list = []
-    while True:
-        category = get_category().upper()
-        amount = get_amount()
+    category = get_category().upper()
+    amount = get_amount()
         
-        if duplication_check(category, data):
-            print("Category is already made, will only add the amount given.")
-            data_list = data[f"{category}"]
-            data_list.append(amount)
-            data.update({f"{category}" : data_list})
-            break
-        else:
-            data_list.append(amount)
-            data.update({f"{category}" : data_list})
-            break
+    if duplication_check(category, data):
+        print("Category is already made, will only add the amount given.")
+        data_list = data[f"{category}"]
+        data_list.append(amount)
+        data.update({f"{category}" : data_list})
+    else:
+        data_list.append(amount)
+        data.update({f"{category}" : data_list})
 
 def get_category():
     while True: 
@@ -54,7 +51,7 @@ def get_amount():
         amount = input("Amount: ")
         
         try: 
-            amount = int(amount)
+            amount = float(amount)
         except ValueError:
             print("Invalid Input.")
         else:
@@ -64,17 +61,16 @@ def get_amount():
                 return amount
             
 def duplication_check(category, data):
-    for x in data.keys():
-        if category in x:
-            return True
-        else:
-            return
+    return category in data
 
 def view_expense(data):
     for x, y in data.items():
         print(x + ": " + str(y))
 
 def calculate_expense(data):
+    if not data: 
+        return None
+
     total_expense = get_total_expense(data)
     average_expense = get_average_expense(data, total_expense)
     highest_expense = get_highest_expense(data)
@@ -122,9 +118,13 @@ def main():
             case 1:
                 add_expense(data)
             case 2:
-                view_expense(data)
+                status = view_expense(data)
+                if not status:
+                    print("There is no data given.")
             case 3:
-                calculate_expense(data)
+                status = calculate_expense(data)
+                if not status:
+                    print("There is no data given.")
             case 4:
                 break
 
